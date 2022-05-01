@@ -10,6 +10,8 @@ async function main() {
   const args = minimist(process.argv.slice(2));
   const token = args.token;
 
+  console.log("args: ", args);
+
   if (!token) {
     return console.error(
       "A token is needed. You can create one on https://web3.storage"
@@ -24,7 +26,9 @@ async function main() {
   const files = [];
 
   for (const path of args._) {
+    console.log("path: ", path);
     const pathFiles = await getFilesFromPath(path);
+    console.log("pathFiles: ", pathFiles);
     files.push(...pathFiles);
   }
 
